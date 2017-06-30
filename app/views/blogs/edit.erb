@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit <%= @blog.title %></title>
+  </head>
+  <body>
+      <form class="" action="/blogs/<%= @blog.id %>" method="post">
+        <input id="hidden" type="hidden" name="_method" value="patch">
+        <p><label>Enter Title:</label></p>
+        <input type="text" name="blog[title]" value="<%= @blog.title %>" size="<%= @blog.title.chars.size %>">
+        <p><label> post content: </label> </p>
+        <textarea name="blog[content]" style="width:250px;height:150px;"><%= @blog.content%></textarea>
+        <p><input type="submit" name="" value="Submit Edit"></p>
+      </form>
+  </body>
+</html>

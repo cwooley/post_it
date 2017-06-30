@@ -13,6 +13,7 @@
     <% @user.blogs.each do |blog| %>
       <p><a href="/blogs/<%= blog.id %>"><%= blog.title %></a></p>
     <% end %>
+    <h4><a href="/blogs/new">Make a new blog post</a></h4>
   </body>
 </html>
 
