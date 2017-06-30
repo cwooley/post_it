@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>All Users Blog Posts</title>
+  </head>
+  <body>
+    <% @blogs.each do |blog| %>
+      <h4><a href="/blogs/<%= blog.id %>"><%= blog.title %> </a></h4>
+    <% end %>
+  </body>
+</html>

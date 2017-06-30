@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= @user.name %>'s Profile</title>
+  </head>
+  <body>
+    <h3> Name: <%= @user.name%> </h3>
+    <h3> Email: <%= @user.email%> </h3>
+    <h3> Username: <%= @user.user_name%> </h3>
+  </br>
+  <h2>Your Blog Posts</h2>
+    <% @user.blogs.each do |blog| %>
+      <p><a href="/blogs/<%= blog.id %>"><%= blog.title %></a></p>
+    <% end %>
+  </body>
+</html>
+
+<%# NOTE: allow users to see their comments, and blogs they liked or disliked %>
