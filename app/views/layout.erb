@@ -12,10 +12,14 @@
     </style>
   </head>
   <body>
-    <ul class="nav nav-tabs">
-      <li role="presentation"><a href="/users">All Users</a></li>
-      <li role="presentation"><a href="/blogs">All Posts</a></li>
-    </ul>
-      <%= yield %>
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li role="presentation"><a href="/users">All Users</a></li>
+        <li role="presentation"><a href="/blogs">All Posts</a></li>
+      </ul>
+      <div class="row">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
