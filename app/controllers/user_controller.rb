@@ -15,10 +15,14 @@ class UserController < ApplicationController
   ##Putting authorization routes here for now
   ## Perhaps they should ahve their own controller
 
-  get '/resgistrations/signup' do
-    erb :signup
+  get '/registrations/signup' do
+    erb :'/registrations/signup'
   end
 
-
+  post '/resgistrations' do
+    @user = User.create(params[:user])
+    session[:id] = @user.id
+    redirect "/users/#{@user.id}"
+  end
 
 end
