@@ -1,5 +1,4 @@
 class UserController < ApplicationController
-
   get '/users' do
     erb :'/users/index'
   end
@@ -15,7 +14,7 @@ class UserController < ApplicationController
   ##Putting authorization routes here for now
   ## Perhaps they should ahve their own controller
 
-  get '/registrations/signup' do
+  get '/signup' do
     erb :'/registrations/signup'
   end
 
@@ -23,6 +22,25 @@ class UserController < ApplicationController
     @user = User.create(params[:user])
     session[:id] = @user.id
     redirect "/users/#{@user.id}"
+  end
+
+  get '/login' do
+    erb :'/sessions/login'
+  end
+
+  post '/sessions' do
+    @user = User.find_by(params[:user])
+    if @user
+      session[:id] = @user.id
+      redirect "/users/#{@user.id}"
+    else
+      redirect "/blogs"
+    end
+  end
+
+  get '/logout' do
+    session.clear
+    redirect "/blogs"
   end
 
 end
