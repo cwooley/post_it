@@ -1,6 +1,12 @@
 require_relative '../../config/environment.rb'
 class BlogController < ApplicationController
 
+  get '/' do
+    @blogs = Blog.all.order('vote_count desc')
+    erb :'/blogs/index'
+  end
+
+
   get '/blogs/new' do
     erb :'/blogs/new'
   end
