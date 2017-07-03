@@ -32,10 +32,13 @@ class UserController < ApplicationController
 
   post '/sessions' do
 
-    @user = User.find_by(params[:user])
-    session[:id] = @user.id
-    redirect "/users/#{@user.id}"
-
+    user = User.find_by(email: params[:user][:email])
+    if user && user.authenticate(params[:user][:password])
+      session[:id] = user.id
+      redirect "/users/#{user.id}"
+    else
+      redirect "/blogs"
+    end
   end
 
   get '/logout' do

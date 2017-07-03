@@ -13,7 +13,7 @@
         <p><label> post content: </label> </p>
         <textarea name="blog[content]" style="width:250px;height:150px;"></textarea>
         <% if session[:id] %>
-          <input type="submit"  value="submit">
+          <p><input type="submit"  value="submit"></p>
         <% else %>
           <p> You must <a href="/login">login</a> or <a href="/signup">Register</a> to make a post. </p>
         <% end %>
