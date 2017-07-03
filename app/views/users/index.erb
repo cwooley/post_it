@@ -6,7 +6,9 @@
   </head>
   <body>
     <% User.all.each do |user| %>
+    <div class="well">
       <h1> Post-iter: <a href="/users/<%= user.id %>"><%= user.name %> </a> </h1>
+    </div>
     <% end %>
   </body>
 </html>
