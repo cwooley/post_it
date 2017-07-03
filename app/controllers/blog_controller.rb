@@ -19,7 +19,7 @@ class BlogController < ApplicationController
   post '/blogs' do
      # User ID of blog params[:user_id].keys[0]
      @blog = Blog.create(params[:blog])
-     @user = User.find(params[:user_id].keys[0])
+     @user = User.find(session[:id])
      @user.blogs << @blog
      @blog.user = @user
      #Send back to owner of blogs show page

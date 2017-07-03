@@ -5,17 +5,19 @@
     <title>New Post</title>
   </head>
   <body>
-    <h1> Write a new post! </h1>
-    <form action="/blogs" method="post">
-      <p><label>Enter Title:</label></p>
-      <input type="text" name="blog[title]">
-      <p><label> post content: </label> </p>
-      <textarea name="blog[content]" style="width:250px;height:150px;"></textarea>
-
-      <% User.all.each do |user| %>
-        <p><label><%= user.user_name %></label><input type="checkbox" name="user_id[<%= user.id %>]"></p>
-      <% end %>
-      <input type="submit"  value="submit">
-    </form>
+    <div class="well">
+      <h1> Write a new post! </h1>
+      <form action="/blogs" method="post">
+        <p><label>Enter Title:</label></p>
+        <input type="text" name="blog[title]">
+        <p><label> post content: </label> </p>
+        <textarea name="blog[content]" style="width:250px;height:150px;"></textarea>
+        <% if session[:id] %>
+          <input type="submit"  value="submit">
+        <% else %>
+          <p> You must <a href="/login">login</a> or <a href="/signup">Register</a> to make a post. </p>
+        <% end %>
+      </form>
+    </div>
   </body>
 </html>
