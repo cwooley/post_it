@@ -10,9 +10,7 @@ class ApplicationController < Sinatra::Base
                          :secret => 'your_secret'
   end
 
-  get '/' do
-    erb :'/blogs/index'
-  end
+
 
   def logged_in?
     # binding.pry
