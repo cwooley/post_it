@@ -16,9 +16,12 @@
       <ul class="nav nav-tabs">
         <li role="presentation"><a href="/users">All Users</a></li>
         <li role="presentation"><a href="/blogs">All Posts</a></li>
+        <% if session[:id] %>
           <li role="presentation"><a href="/logout">Logout</a></li>
+        <% else %>
           <li role="presentation"><a href="/login">Login</a></li>
           <li role="presentation"><a href="/signup">Sign up</a></li>
+        <% end %>
       </ul>
       <div class="row">
         <%= yield %>

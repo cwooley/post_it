@@ -5,6 +5,7 @@ Bundler.require(:default, ENV['SINATRA_ENV'])
 
 configure :development do
   set :database, 'sqlite3:db/post_it.db'
+  
 end
 
 require_all 'app'

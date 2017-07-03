@@ -31,18 +31,18 @@ class UserController < ApplicationController
   end
 
   post '/sessions' do
+
     @user = User.find_by(params[:user])
-    if @user
-      session[:id] = @user.id
-      redirect "/users/#{@user.id}"
-    else
-      redirect "/blogs"
-    end
+    session[:id] = @user.id
+    redirect "/users/#{@user.id}"
+
   end
 
   get '/logout' do
     session.clear
     redirect "/blogs"
   end
+
+
 
 end
