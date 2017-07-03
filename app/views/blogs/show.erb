@@ -5,29 +5,34 @@
     <title><%= @blog.title %></title>
   </head>
   <body>
-    <h1><%= @blog.title%></h1>
-    <h6><%= @blog.vote_count %></h6>
-    <h4>Posted By: <a href="/users/<%= @blog.user.id%>"> <%= @blog.user.user_name %></a></h4>
-    <p> <%= @blog.content %> </p>
+    <div class="well">
+      <h1><a href="/blogs/<%= @blog.id %>/countup" ><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Green-Up-Arrow.svg/2000px-Green-Up-Arrow.svg.png" alt="UpVote" height="20" width="20"></a>
+      <a href="/blogs/<%= @blog.id %>/countdown" ><img src="https://openclipart.org/image/2400px/svg_to_png/165169/arrowdownred.png" alt="DownVote" height="20" width="20"></a><%= @blog.title%></h1>
+      <h4>Posted By: <a href="/users/<%= @blog.user.id%>"> <%= @blog.user.user_name %></a></h4></p>
+      <p> <%= @blog.content %>
+    </div>
 
     <p>
-    <form action="/blogs/<%= @blog.id %>" method="post">
-      <input id="hidden" type="hidden" name="_method" value="delete">
-      <input type="submit" value="Delete">
-    </form>
-    </p>
-    <p>
-    <form action="/blogs/<%= @blog.id %>/edit" method="get">
-      <input type="submit" value="Edit">
-    </form>
-    </p>
-    <p>
-    <a href="/blogs/<%= @blog.id %>/countup" ><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Green-Up-Arrow.svg/2000px-Green-Up-Arrow.svg.png" alt="Smiley face" height="20" width="20"></a>
-    <a href="/blogs/<%= @blog.id %>/countdown" ><img src="https://openclipart.org/image/2400px/svg_to_png/165169/arrowdownred.png" alt="Smiley face" height="20" width="20"></a>
-    </p>
-    <% @blog.comments.each do |comment| %>
-      <p><%= comment.content %> </p>
+    <% if session[:id] == @blog.user.id %>
+      <form action="/blogs/<%= @blog.id %>" method="post">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete">
+      </form>
+      </p>
+      <p>
+      <form action="/blogs/<%= @blog.id %>/edit" method="get">
+        <input type="submit" value="Edit">
+      </form>
+      </p>
     <% end %>
+    <p>
+
+    </p>
+      <% @blog.comments.each do |comment| %>
+        <hr>
+        <p><%= comment.content %> </p>
+      <% end %>
+        <hr>
 
     <form action="/blogs/<%= @blog.id %>/comment" method="post">
       <textarea name="comment[content]" style="width:250px;height:150px;" > </textarea>

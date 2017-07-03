@@ -5,12 +5,14 @@
     <title>Login</title>
   </head>
   <body>
-    <h2>Login</h2>
-    <form  action="/sessions" method="post">
-      <label>Email</label><input type="text" name="user[email]" value="">
-      <label>Password</label><input type="password" name="user[password]" value="">
-      <p><input type="submit" name="" value="login" class="btn btn-primary"></p>
-    </form>
-    <a href="/signup">Sign up</a>
+    <div class="well">
+      <h2>Login</h2>
+      <form  action="/sessions" method="post">
+        <label>Email</label><input type="text" name="user[email]" value="">
+        <label>Password</label><input type="password" name="user[password]" value="">
+        <p><input type="submit" name="" value="login" class="btn btn-primary"></p>
+      </form>
+      <a href="/signup">Sign up</a>
+    </div>
   </body>
 </html>
