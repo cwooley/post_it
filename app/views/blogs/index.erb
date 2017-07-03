@@ -6,8 +6,9 @@
   </head>
   <body>
     <% @blogs.each do |blog| %>
-      <h3><a href="/blogs/<%= blog.id %>"><%= blog.title %></a></h3>
+      <h3><%= blog.vote_count %><a href="/blogs/<%= blog.id %>"><%= blog.title %></a></h3>
       <p> <a href="/users/<%= blog.user.id %>" style="color: black">Posted by: <%= blog.user.user_name %></a></p>
+
     <% end %>
   </body>
 </html>

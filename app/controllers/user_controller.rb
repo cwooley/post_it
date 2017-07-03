@@ -5,6 +5,8 @@ class UserController < ApplicationController
 
   get '/users/:id' do
     @user = User.find(params[:id])
+    karma_per_blog = Blog.all.map{ |blog| blog.vote_count}
+    @karma = karma_per_blog.inject(:+)
     erb :'/users/show'
   end
 

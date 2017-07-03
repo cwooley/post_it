@@ -5,7 +5,7 @@ class BlogController < ApplicationController
   end
 
   get '/blogs' do
-    @blogs = Blog.all
+    @blogs = Blog.all.order('vote_count desc')
     erb :'/blogs/index'
   end
   # put this line back in index.erb
@@ -53,6 +53,20 @@ class BlogController < ApplicationController
     user_id = @blog.user.id
     @blog.delete
     redirect :"/users/#{user_id}"
+  end
+
+  get'/blogs/:id/countup' do
+    @blog = Blog.find(params[:id])
+    @blog.vote_count += 1
+    @blog.save
+    redirect :"/blogs/#{@blog.id}"
+  end
+
+  get'/blogs/:id/countdown' do
+    @blog = Blog.find(params[:id])
+    @blog.vote_count -= 1
+    @blog.save
+    redirect :"/blogs/#{@blog.id}"
   end
 
 end

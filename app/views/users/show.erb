@@ -8,6 +8,7 @@
     <h3> Name: <%= @user.name%> </h3>
     <h3> Email: <%= @user.email%> </h3>
     <h3> Username: <%= @user.user_name%> </h3>
+    <h3> Total Karma: <%= @karma %> </h3>
   </br>
   <h2>Your Blog Posts</h2>
     <% @user.blogs.each do |blog| %>
